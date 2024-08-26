@@ -4,7 +4,7 @@ class MyButton extends StatelessWidget {
   final String text;
   final Function onPressed;
 
-  const MyButton({required this.text, required this.onPressed});
+  const MyButton({super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
