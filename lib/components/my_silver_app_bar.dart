@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/cart_page.dart';
 
 class MySilverAppBar extends StatelessWidget {
   const MySilverAppBar({
@@ -20,7 +21,11 @@ class MySilverAppBar extends StatelessWidget {
       pinned: true,
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const CartPage();
+            }));
+          },
           icon: Icon(
             Icons.shopping_cart,
             color: Theme.of(context).colorScheme.inversePrimary,
