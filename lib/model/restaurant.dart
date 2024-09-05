@@ -148,6 +148,42 @@ class Restaurant extends ChangeNotifier {
 
 // ** Helpers
   //generate receipt
-  //format double value to currency
-  // format list of addons to string
+  String displayCartReceipt() {
+    final receipt = StringBuffer();
+    receipt.writeln('Here is your receipt');
+    //format the date
+    final formattedDate = DateTime.now().toString().split('.')[0];
+    receipt.writeln('$formattedDate');
+    receipt.writeln();
+    receipt.writeln('-----------------------');
+
+    //display each cart item
+    for (CartItem cartItem in _cart) {
+      receipt.writeln(
+          '${cartItem.food.name} x ${cartItem.quantity} (${_formatPrice(cartItem.food.price)})');
+      //display addons
+      if (cartItem.selectedAddons.isNotEmpty) {
+        receipt.writeln('Addons: ${_formatAddons(cartItem.selectedAddons)}');
+      }
+      //display price
+      receipt.writeln();
+      receipt.writeln('-----------------------');
+
+      receipt.writeln('Total items : ${gettotalItemCount()}');
+      receipt.writeln('Total: ${_formatPrice(gettotalPrice())}');
+    }
+    return receipt.toString(); // Add return statement here
+  }
+}
+
+//format double value to currency
+String _formatPrice(double price) {
+  return '\$${price.toStringAsFixed(2)}';
+}
+
+// format list of addons to string
+String _formatAddons(List<Addon> addons) {
+  return addons
+      .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+      .join(', ');
 }

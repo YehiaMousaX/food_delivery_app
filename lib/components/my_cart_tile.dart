@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/my_quantity_selector.dart';
 import 'package:food_delivery/model/cart_item.dart';
-import 'package:food_delivery/model/food.dart';
+
 import 'package:food_delivery/model/restaurant.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +19,7 @@ class MyCartTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(7),
                 color: Theme.of(context).colorScheme.secondary,
               ),
-              margin: const EdgeInsets.symmetric(horizontal: 5 ,vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               child: Column(
                 children: [
                   Padding(
@@ -42,16 +41,16 @@ class MyCartTile extends StatelessWidget {
                           children: [
                             Text(cartItem.food.name,
                                 style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.inversePrimary,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary,
                                     fontSize: 15)),
-                            Text(
-                              '\$${cartItem.totalPrice}',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontSize: 15)
-                            ),
+                            Text('\$${cartItem.totalPrice}',
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    fontSize: 15)),
                           ],
                         ),
 
