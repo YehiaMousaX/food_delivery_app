@@ -20,9 +20,7 @@ class Food {
 enum FoodCategory {
   burgers,
   salads,
-  sides,
   desserts,
-  drinks,
 }
 class Addon{
   final String name;
