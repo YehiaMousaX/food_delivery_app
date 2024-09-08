@@ -153,7 +153,7 @@ class Restaurant extends ChangeNotifier {
     receipt.writeln('Here is your receipt');
     //format the date
     final formattedDate = DateTime.now().toString().split('.')[0];
-    receipt.writeln('$formattedDate');
+    receipt.writeln(formattedDate);
     receipt.writeln();
     receipt.writeln('-----------------------');
 

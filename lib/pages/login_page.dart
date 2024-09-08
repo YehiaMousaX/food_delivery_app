@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/components/my_button.dart';
 import 'package:food_delivery/components/my_textfeilds.dart';
 import 'package:food_delivery/pages/home_page.dart';
+import 'package:food_delivery/services/auth/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -14,10 +15,33 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailConroller = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  void login() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const HomePage()));
+  void login() async {
+    final _authService = AuthService();
+    try {
+      await _authService.signInWithEmailPassoword(
+          emailConroller.text, passwordController.text);
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const HomePage()));
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text("Error"),
+              content: Text(e.toString()),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("OK"))
+              ],
+            );
+          });
+    }
   }
+
+
 
   @override
   Widget build(BuildContext context) {

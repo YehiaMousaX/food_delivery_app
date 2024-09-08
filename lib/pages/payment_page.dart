@@ -24,7 +24,7 @@ class _PaymentPageState extends State<PaymentPage> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: Text("Confirm the payment"),
+                title: const Text("Confirm the payment"),
                 content: SingleChildScrollView(
                   child: ListBody(
                     children: [
@@ -43,7 +43,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DeliveryProgressPage()));
+                                builder: (context) => const DeliveryProgressPage()));
                       },
                       child: const Text("Yes")),
                   //cancel

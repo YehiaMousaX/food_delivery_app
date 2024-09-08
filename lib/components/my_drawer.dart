@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/my_drawer_tile.dart';
 import 'package:food_delivery/pages/settings_page.dart';
+import 'package:food_delivery/services/auth/auth_service.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    void logout() {
+      final authService = AuthService();
+      authService.signOut();
+    }
+
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       child: Padding(
@@ -34,13 +40,22 @@ class MyDrawer extends StatelessWidget {
                   Navigator.pop(context);
                 }),
             MyDrawerTile(
-                title: 'S E T T I N G S', icon: Icons.settings, onTap: () {
+                title: 'S E T T I N G S',
+                icon: Icons.settings,
+                onTap: () {
                   Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingsPage()));
                 }),
             const Spacer(),
             MyDrawerTile(
-                title: 'L O G O UT', icon: Icons.logout_rounded, onTap: () {}),
+                title: 'L O G O UT',
+                icon: Icons.logout_rounded,
+                onTap: () {
+                  logout();
+                }),
 
             //settings
             //logout
